@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Web Page</h1>
+
+<p id="demo">A Paragraph.</p>
+
+
+<button type="button" onclick="sendData('13on')">Turn On</button>
+<button type="button" onclick="sendData('13off')">Turn Off</button>
+
+
+<script>
+function recievedData(s) {
+	document.getElementById("demo").innerHTML =  document.getElementById("demo").innerHTML + "</br>" + s;
+}
+
+
+
+function sendData(s){
+	serialusb.sendData(s);
+}
+
+</script>
+
+</body>
+</html> 

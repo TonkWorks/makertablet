@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ThunderPuppy</string>
+    <string name="default_text_string">No data</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="permission_denied">Permission denied!</string>
+    <string name="receiving">Receiving!</string>
+    <string name="opening_device_failed">Opening USB device failed!</string>
+    <string name="claimning_interface_failed">Claiming interface failed!</string>
+    <string name="no_in_endpoint_found">No in endpoint found!</string>
+    <string name="no_out_endpoint_found">No out endpoint found!</string>
+    <string name="no_extra_in_intent">No %1$s extra in intent!</string>
+    <string name="device_detaches">Device detached!</string>
+    <string name="no_device_found">No device found!</string>
+    <string name="found">found!</string>
+</resources>

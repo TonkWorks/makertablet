@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://getbootstrap.com/2.3.2/examples/sticky-footer.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- CSS -->
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+
+      /* Sticky footer styles
+      -------------------------------------------------- */
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -150px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 150px;
+        overflow-y: scroll;
+
+      }
+      #footer {
+        background-color: #f5f5f5;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+      #el{
+            font-size:36px;
+
+      }
+
+
+      .container {
+        width: auto;
+        max-width: 680px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+      
+      button{
+            font-size:36px;
+      		width: 400px;
+      		height: 200px;
+      		margin-bottom:50px
+      }
+
+    </style>
+    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+
+    <!-- Part 1: Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Begin page content -->
+      <div class="container">
+        <div class="page-header">
+          <h1>MakerTablet Demo</h1>
+        </div>
+        <p class="lead">Arduino Motor Control Demo</p>
+        
+        <p>
+          <button type="button" onclick="sendData('motoron')">Turn motor on</button>
+          <button type="button" onclick="sendData('motoroff')">Turn motor off</button>
+        </p>
+      </div>
+
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit" id="console">Arduino Uno R3
+        </p>
+      </div>
+    </div>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Ackbar-light_files/jquery.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-transition.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-alert.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-modal.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-dropdown.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-scrollspy.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-tab.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-tooltip.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-popover.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-button.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-collapse.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-carousel.js"></script>
+    <script src="./Ackbar-light_files/bootstrap-typeahead.js"></script>
+
+  <script>
+      function recievedData(s) {
+        //document.getElementById("demo").innerHTML =  document.getElementById("demo").innerHTML + "</br>" + s;
+        addToConsole("Recieved: " + s);
+        animatenumber(s)
+      }
+
+
+
+      function sendData(s){
+        addToConsole("Sent: " + s);
+        serialusb.sendData(s);
+
+      }
+
+
+      $(document).ready(function(){
+            //setInterval(function(){recievedData(40*Math.random())}, 750);
+      });
+
+
+
+
+      function addToConsole(s){
+          $("#console").prepend("<p>" + displayTime() + " - " + s + "</p>")
+      }
+
+
+function displayTime() {
+    var str = "";
+
+    var currentTime = new Date()
+    var hours = currentTime.getHours()
+    var minutes = currentTime.getMinutes()
+    var seconds = currentTime.getSeconds()
+
+    if (minutes < 10) {
+        minutes = "0" + minutes
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds
+    }
+    str += hours + ":" + minutes + ":" + seconds + " ";
+    if(hours > 11){
+        str += "PM"
+    } else {
+        str += "AM"
+    }
+    return str;
+}
+
+
+
+</script>
